@@ -1,0 +1,23 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\begin{document}
+
+\noindent Andrea Gadotti \hfill 18 marzo 2014 - Revisione 0 
+
+\
+
+\section*{Teoria dei Modelli - Primo foglio di esercizi}
+
+\
+\subsection*{Esercizio 2.20}
+La formula $\psi= \forall x y \, (r(x,y) \wedge r(u,v) \Rightarrow \neg r(x,u) \wedge \neg r(y,v))$ soddisfa le richieste dell'esercizio. La verifica è diretta e immediata per entrambi i versi dell'implicazione.
+
+\subsection*{Esercizio 3.43}
+Per trovare $K$, è sufficiente ripetere la dimostrazione del teorema di Löwenheim-Skolem, con la seguente modifica: per assicurarci che venga soddisfatta anche la richiesta $K \cap M \preceq N$, è necessario imporre che, nel caso in cui la formula $\varphi_k(x)$ contenga solo parametri in $M$ (oppure nessun parametro), allora anche $a_k$ appartiene ad $M$. Questo è sempre possibile, in quanto per ipotesi abbiamo che $M \preceq N$.\\
+La verifica che $K \preceq N$ è identica a quella della dimostrazione originale. Anche la verifica che $K \cap M \preceq N$ è analoga; infatti, $K \cap M$ soddisfa le ipotesi del criterio di Tarski-Vaught, poiché le formule esistenziali a parametri in $K \cap M$ possiedono testimoni in $K \cap M$ per costruzione.
+
+
+\end{document}
