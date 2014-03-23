@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\def\ccl{\textrm{ccl}}
+\def\st{\textrm{st}}
+\def\phi{\varphi}
+\def\D{\EuScript D}
+\def\Ee{\EuScript E}
+\def\P{\EuScript P}
+\def\K{\EuScript K}
+\def\U{\EuScript U}
+\def\ZZ{\mathds Z}
+\def\NN{\mathds N}
+\def\QQ{\mathds Q}
+\def\RR{\mathds R}
+\def\<{\langle}
+\def\>{\rangle}
+\def\E{\exists}
+\def\A{\forall}
+\def\0{\varnothing}
+\def\equivL{\stackrel{\smash{\scalebox{.5}{\rm L}}}{\equiv}}
+\def\imp{\rightarrow}
+\def\iff{\leftrightarrow}
+\def\IMP{\Rightarrow}
+\def\IFF{\Leftrightarrow}
+\def\range{\textrm{im}}
+\def\Aut{{\rm Aut}}
+\def\tp{{\rm tp}}
+\def\acl{{\rm acl}}
+\def\eq{{\rm eq}}
+\def\Mod{\textrm{Mod}}
+\def\models{\vDash}
+\def\proves{\vdash}
+\def\notmodels{\nvDash}
+\def\sm{\smallsetminus}
+\DeclareMathOperator{\dom}{dom}
+\begin{document}
+
+\noindent Andrea Gadotti \hfill 23 marzo 2014 - Revisione 0 
+
+\
+
+\section*{Teoria dei Modelli - Secondo foglio di esercizi}
+
+\
+\subsection*{Esercizio 1}
+Fissiamo un insieme di formule $\Delta$ e sia $\{\A\}\Delta$ la chiusura di $\Delta$ per quantificazione universale. Sia $h:M\imp N$ un $\Delta$-morfismo. Si dimostri che se è suriettivo, allora \`e anche un $\{\A\}\Delta$-morfismo.\\
+\\
+\noindent\textbf{Soluzione}
+Osserviamo che per ipotesi vale $\forall c \in N \exists b \in M (c=h(b))$. Allora, per ogni formula $\phi(x,y)$ in $\Delta$ e ogni tupla $a \in (\dom h)^{|x|}$ abbiamo:
+\begin{equation*}
+\begin{split}
+M \models \forall y \phi(a,y) 
+& \Rightarrow M \models \phi(a,b) \text{ per ogni tupla } b \in M^{|y|}\\
+& \Rightarrow M \models \phi(a,b) \text{ per ogni tupla } b \in (\dom h)^{|y|}\\
+& \Rightarrow M \models \phi(ha,hb) \text{ per ogni tupla } b \in (\dom h)^{|y|}\\
+& \Rightarrow M \models \phi(ha,c) \text{ per ogni tupla } c \in N^{|y|}\\
+& \Rightarrow N \models \forall y \phi(ha,y) 
+\end{split}
+\end{equation*}
+
+
+
+
+\subsection*{Esercizio 2}
+Si dimostri che per ogni tipo $p\subseteq\Delta$ le seguenti affermazioni sono equivalenti
+\begin{itemize}
+\item[1.] $p$ \`e principale;
+\item[2.] $\phi\proves p$ dove $\phi$ \`e congiunzione di formule in $p$;
+\item[3.] $\phi\proves p\proves \phi$ per qualche formula $\phi$. 
+\end{itemize}
+
+\noindent\textbf{Soluzione} Sia $q$ il filtro generato da $p$ in $\mathbb{P}(\Delta)$.
+\begin{itemize}
+\item $1. \Rightarrow 2.$ Poiché $p$ è principale, si ha che $q=\{ \psi \in \mathbb{P}(\Delta) : \phi' \vdash \psi \}$ per qualche $\phi' \in \mathbb{P}(\Delta)$. Per il lemma 5.11, $q=\{ \psi \in \mathbb{P}(\Delta) : p \vdash \psi \}$. 
+Ovviamente $p \vdash p$, quindi $\phi' \vdash p$. Inoltre $\phi' \vdash \phi'$, quindi $p \vdash \phi'$. 
+Per compattezza, esiste $p' \subseteq p$ finito tale che $p' \vdash \phi'$. Sia $\phi:= \wedge p'$. Si ha che $\phi \vdash \phi' \vdash p$.
+\item $2. \Rightarrow 3.$ Ovvio.
+\item $3. \Rightarrow 1.$ Poiché $p \vdash \phi$, per compattezza esiste $p' \subseteq p$ finito tale che $p' \vdash \phi$. Sia $\psi := \wedge p'$. Si ha che $p \vdash \psi \vdash \phi \vdash p$, ovvero $q=\uparrow\psi$.
+\end{itemize}
+
+\subsection*{Esercizio 3}
+Usando il lemma~5.16 si dia una dimostrazione concisa del corollario~5.15.\\
+\\
+\noindent\textbf{Soluzione}
+L'implicazione $1. \Rightarrow 2.$ è ovvia per il lemma 5.11. Per l'implicazione $2. \Rightarrow 1.$, vogliamo mostrare che $A:=p \cup \{ \neg\phi : \phi \in \Delta \text{ e } p \not\vdash \phi \}$ è consistente. Dimostriamo il contrappositivo. Supponiamo allora $A \vdash \psi$ e $\A \vdash \neg \psi$. Allora per compattezza esiste $B \subseteq A$ finito tale che $B \vdash \psi$ e $B \vdash \neg\psi$. \footnote{In realtà gli insiemi per $\psi$ e $\neg\psi$ sarebbero diversi, ma basta prendere l'unione.}\\
+Se $p$ è inconsistente, allora la tesi è banalmente vera. Supponiamo allora $p$ consistente. Allora $B \cap \{ \neg\phi : \phi \in \Delta \text{ e } p \not\vdash \phi \} = \{\neg\phi_1,...,\neg\phi_n\}$ per qualche $n>0$. Quindi $p \cup \{\neg\phi_1,...,\neg\phi_n\} \vdash \perp$. Questo significa $p \vdash \neg(\neg\phi_1 \wedge ... \wedge \neg\phi_n) \vdash \phi_1 \vee ... \vee \phi_n$. Ma ogni $\phi_i$ sta in $\Delta$ ed è tale che $p \not\vdash \phi_i$, e per il lemma 5.16 abbiamo finito.
+
+
+
+\end{document}
