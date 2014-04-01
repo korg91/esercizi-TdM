@@ -1,0 +1,98 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+
+\def\ccl{\textrm{ccl}}
+\def\st{\textrm{st}}
+\def\phi{\varphi}
+\def\D{\EuScript D}
+\def\Ee{\EuScript E}
+\def\P{\EuScript P}
+\def\K{\EuScript K}
+\def\U{\EuScript U}
+\def\ZZ{\mathds Z}
+\def\NN{\mathds N}
+\def\QQ{\mathds Q}
+\def\RR{\mathds R}
+\def\<{\langle}
+\def\>{\rangle}
+\def\E{\exists}
+\def\A{\forall}
+\def\0{\varnothing}
+\def\equivL{\stackrel{\smash{\scalebox{.5}{\rm L}}}{\equiv}}
+\def\imp{\rightarrow}
+\def\iff{\leftrightarrow}
+\def\IMP{\Rightarrow}
+\def\IFF{\Leftrightarrow}
+\def\range{\textrm{im}}
+\def\Aut{{\rm Aut}}
+\def\tp{{\rm tp}}
+\def\acl{{\rm acl}}
+\def\eq{{\rm eq}}
+\def\Mod{\textrm{Mod}}
+\def\models{\vDash}
+\def\proves{\vdash}
+\def\notmodels{\nvDash}
+\def\sm{\smallsetminus}
+\def\ssf#1{\textsf{\small #1}}
+\DeclareMathOperator{\dom}{dom}
+\begin{document}
+
+\noindent Andrea Gadotti \hfill 27 marzo 2014 - Revisione 0 
+
+\
+
+\section*{Teoria dei Modelli - Terzo foglio di esercizi}
+
+\
+
+\subsection*{Esercizio 1}
+Espandiamo il linguaggio $L_{\rm os}$ con un predicato binario $r$. Chiamiamo $L$ questo linguaggio. Sia $T$ la teoria che dice che $<$ ed $r$ definiscono rispettivamente un ordine lineare e una relazione di equivalenza. Si assiomatizzi una teoria per cui vale un lemma di estensione analogo a quello che vale per i modelli di $T_{\rm oldse}$ con $T$ al posto di $T_{\rm ol}$. (Non serve riportare la dimostrazione, è sufficiente l'assiomatizzazione.)\\
+\\
+\noindent\textbf{Soluzione 1 (per scherzare)} Sia $T:=\{\perp\}$.\\
+\\
+\noindent\textbf{Soluzione 2} Sia $T=T_{\text{oldse}}\cup\{\sigma\}$, dove 
+$$\sigma:=\forall x,y,z (x<y \Rightarrow \exists u (x<u<y \wedge r(u,z)))$$
+
+
+\subsection*{Esercizio 2}
+Sia $N$ un grafo aleatorio e sia $M\subseteq N$ con $N\sm M$ finito. È vero che anche $M$ è un grafo aleatorio?\\
+\\
+\noindent\textbf{Soluzione} Sì. \ssf{nb} è banalmente soddisfatta grazie alla Proposizione 6.14. Supponiamo ora $\{x_i : i \leq n\}$ e $\{y_j : j \leq m\}$ sottoinsiemi disgiunti di $M$, per qualche $n,m \in \mathbb{N}$. Il testimone $z$ richiesto da \ssf{ga} è ottenuto calcolandolo in $N$ prendendo $X:=\{x_i : i \leq n\} \cup (N \setminus M)$ e $Y:=\{y_j : j \leq m\}$, che ha senso perché $N \setminus M$ è finito per ipotesi.
+
+
+\subsection*{Esercizio 3}
+Sia $N$ un grafo aleatorio si dimostri che esistono un grafo aleatorio $M\subseteq N$ ed un elemento $b\in N$ tale che $r(b,M)=M$.\\
+\\
+\noindent\textbf{Soluzione} Sia $b \in N$. Sia $c \in N$ tale che $r(c,b)$, che si trova applicando banalmente \ssf{nb} e \ssf{ga}. Costruiamo $M$ per induzione su $\mathbb{N}$. Poniamo $M_0:=\{c\}$. Supponiamo di avere già costruito $M_i$, e costruiamo $M_{i+1}$ espandendo $M_i$ in questo modo: per ogni possibile $n$-upla $\{x_i\}_{i \leq n}$ e $m$-upla $\{y_j\}_{j \leq m}$ di elementi di $M_i$, aggiungiamo a $M_{i+1}$ il testimone $z$ dell'enunciato \ssf{ga} calcolato in $N$, prendendo $X:=\{x_i\}_{i \leq n} \cup \{b\}$ e $Y:=\{y_j\}_{j \leq m}$. Definiamo ora $M:= \cup_{i \in \mathbb{N}} M_i$. È chiaro che per ogni $m \in M$ vale $r(b,m)$. Resta da controllare che $M$ è aleatorio. Ma questo è vero, perché per ogni $n$-upla $\{x_i\}_{i \leq n}$ e $m$-upla $\{y_j\}_{j \leq m}$ di elementi di $M$, esiste un $i \in \mathbb{N}$ tale che $M_i$ le contiene, e quindi $M_{i+1} \subseteq M$ contiene il relativo testimone $z$.
+
+%È chiaro che se $N_i$ è un insieme finito, allora lo è anche $N_{i+1}$
+
+
+\subsection*{Esercizio 4}
+Siano $N_1$ ed $N_2$ due grafi aleatori numerabili e sia $c\in N_1$ un elemento fissato. Sia $N$ un grafo che ha per dominio l'unione disgiunta di $N_1$ ed $N_2$ e come archi quelli di $N_1$ pi\`u quelli di $N_2$ più quelli che congiungono $c$ a tutti i vertici di $N_1$. È $N$ un grafo ultraomogeneo? Esiste una formula senza parametri che definisce $N_1$?\\
+\\
+\noindent\textbf{Soluzione} \ 
+\begin{itemize}
+
+\item $N$ non è ultraomogeneo. Infatti, siano $n_1 \in N_1$ e $n_2 \in N_2$, e sia $k: \{n_2\} \rightarrow \{n_1\}$, $k(n_2)=n_1$, che è un'immersione parziale. Supponiamo per assurdo che esista un isomorfismo $g: N \rightarrow N$ che estende $k$. $N_1$ e $N_2$ sono aleatori per ipotesi, quindi per ogni punto $m_i \in N_i$, esiste un terzo punto $c_i \in N_i$ tale che $r(c_i,n_i)$ e $r(c_i,m_i)$. Ma $N_1$ e $N_2$ sono disgiunti e scollegati per ipotesi. Quindi, dato che $f$ preserva la relazione $r$, necessariamente deve essere $f[N_1]=N_2$ e $f[N_2]=N_1$. Ma allora $f(c) \in N_2$ dovrebbe essere in relazione con tutti i vertici di $N_2$, e questo è impossibile perché contraddice banalmente l'aleatorietà di $N_2$.
+
+\item Osserviamo che $c$ è definibile mediante la formula
+\begin{multline*}
+\phi(x)=\forall n_1,n_2 \big(
+\neg \exists y (r(n_1,y) \wedge r(n_2,y)) 
+\Rightarrow \\
+((r(x,n_1) \wedge \neg r(x,n_2)) \vee (r(x,n_2) \wedge \neg r(x,n_1)) \\
+\vee x=n_1 \vee x=n_2
+\big)
+\end{multline*}
+e quindi possiamo definire $N_1$ mediante
+$$\psi(x)=r(x,c)$$
+
+\end{itemize}
+
+
+\end{document}
