@@ -1,0 +1,92 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage{euscript}
+
+\def\ccl{\textrm{ccl}}
+\def\st{\textrm{st}}
+\def\phi{\varphi}
+\def\D{\EuScript D}
+\def\Ee{\EuScript E}
+\def\P{\EuScript P}
+\def\K{\EuScript K}
+\def\U{\EuScript U}
+\def\ZZ{\mathds Z}
+\def\NN{\mathds N}
+\def\QQ{\mathds Q}
+\def\RR{\mathds R}
+\def\<{\langle}
+\def\>{\rangle}
+\def\E{\exists}
+\def\A{\forall}
+\def\0{\varnothing}
+\def\equivL{\stackrel{\smash{\scalebox{.5}{\rm L}}}{\equiv}}
+\def\imp{\rightarrow}
+\def\iff{\leftrightarrow}
+\def\IMP{\Rightarrow}
+\def\IFF{\Leftrightarrow}
+\def\range{\textrm{im}}
+\def\Aut{{\rm Aut}}
+\def\tp{{\rm tp}}
+\def\acl{{\rm acl}}
+\def\eq{{\rm eq}}
+\def\Mod{\textrm{Mod}}
+\def\models{\vDash}
+\def\proves{\vdash}
+\def\notmodels{\nvDash}
+\def\sm{\smallsetminus}
+\def\ssf#1{\textsf{\small #1}}
+\DeclareMathOperator{\dom}{dom}
+\begin{document}
+
+\noindent Andrea Gadotti \hfill 7 aprile 2014 - Revisione 0 
+
+\
+
+\section*{Teoria dei Modelli - Quarto foglio di esercizi}
+
+\
+
+\subsection*{Esercizio 1}
+Il linguaggio $L$ estende quello degli ordini stretti con infiniti predicati unari $\{r_i:i\in\omega\}$. La teoria $T$ estende $T_{\rm oldse}$ con i seguenti assiomi
+\begin{itemize}
+\item[1.] $\neg\E x [r_ix\wedge r_jx]$ per ogni $i<j$;
+\item[2.] $\A x,y\,[x<y \Rightarrow \E z (r_iz\wedge x<z<y)]$ per ogni $i$.
+\end{itemize}
+Definiamo $p(x,a,b)=\{\neg r_i(x) : i\in\omega\}\cup\{a<x<b\}$. Si dimostri che i modelli numerabili di $T$ che realizzano i tipi $p(x,a,b)$ per ogni $a<b$ sono saturi.\\
+\\
+\noindent\textbf{Soluzione} 
+Procediamo per passi.
+\begin{itemize}
+\item[(a)]  Siano $M,N$ modelli numerabili di $T$ che realizzano i tipi $p(x,a,b)$ della consegna. Sia $k$ un'immersione parziale finita. Allora esiste un'immersione $h: M \rightarrow N$ che estende $k$.\\
+\textit{Dimostrazione} La dimostrazione è uguale a quella del Teorema 6.1, assicurandosi anche che $c$ venga scelto in modo che $r_i a_i \Leftrightarrow r_i c$. Questo è possibile grazie alle ipotesi, e in particolare "$\Rightarrow$" può essere soddisfatta grazie agli assiomi 2., mentre "$\Leftarrow$" può essere soddisfatta grazie al fatto che i modelli in questione rispettano i tipi $p(x,a,b)$.
+\item[(b)] Vale l'analogo del Teorema 6.2, prendendo $M,N$ come nella consegna. La dimostrazione è identica e usa il punto (a).
+\item[(c)] Se $M,N$ sono modelli come nella consegna, allora la mappa vuota è un'immersione parziale, perché le strutture in questione sono relazionali. Abbiamo quindi che i modelli della consegna sono ultraomogenei. Inoltre abbiamo una sorta di ($\omega$-)categoricità, nel senso che due modelli come nella consegna sono isomorfi (non possiamo parlare di teoria categorica, in quanto, in realtà, noi stiamo lavorando con modelli che non solo soddisfano degli enunciati, ma realizzano anche dei tipi, che sono formule infinitarie, e che hanno una determinata cardinalità). Quindi possiamo parlare del*LA* teoria $T'$ dei modelli che soddisfano la consegna, che è quindi $\omega$-categorica.
+\item[(d)] Grazie al Lemma 6.24, abbiamo che le immersioni parziali e le mappe elementari tra modelli numerabili di $T'$ coincidono.
+\item[(e)] Possiamo finalmente dimostrare che i modelli della consegna sono saturi. Ovvero, se $N \models T'$ ed ha cardinalità $\omega$, allora è saturo.\\
+\textit{Dimostrazione} Vogliamo mostrare che vale la caratterizzazione del punto 2 del Teorema 8.5. Sia $M$ numerabile e sia $k: M \rightarrow N$ una mappa elementare finita. Allora $M \equiv N$, ovvero anche $M$ è un modello come quelli della consegna. Inoltre $k$ è banalmente un'immersione parziale (e qui non si usa nulla). Grazie al punto (b), possiamo estendere $k$ a un isomorfismo $h$. Ogni isomorfismo è chiaramente un'immersione, e adesso usando il punto (d) possiamo dire che è anche un'immersione elementare.
+\end{itemize}
+
+
+\subsection*{Esercizio 2}
+
+Fissiamo un insieme di parametri $A$. Sia $p(x,y)\subseteq L(A)$. Si dimostri che la formula infinitaria $\E y\,p(x,y)$ \`e equivalente ad un tipo, precisamente, al tipo 
+
+\hfill $q(x)\ \ =\ \ \big\{ \E y\,\phi(x,y)\ :\ \phi(x,y) \textrm{ congiunzione di formule in }  p(x,y)\big\}$.\\
+\\
+\noindent\textbf{Soluzione} Sia $a \in \U$. Mostriamo che vale $\exists y p(a,y)$ se e solo se vale $q(a)$. Il verso da sinistra a destra è banale. Supponiamo ora che valga $q(a)$ e che per assurdo $p(a,y)$ non sia realizzabile. Allora, per saturazione, avremmo che esiste $p_0(a,y) \subseteq p(a,y)$ finito che non ha una realizzazione. Ma questo è chiaramente impossibile perché $\exists y (\bigwedge p_0(a,y))$ è proprio una delle formule di $q(a)$.
+
+
+\subsection*{Esercizio 3}
+Fissiamo un insieme di parametri $A$. Sia $p(x)\subseteq L(A)$ un tipo, si dimostri che se $\neg p(\U)$ è definibile da un tipo, allora $p(\U)$ è definibile. (Si confronti questo con la proposizione~5.9.)\\
+\\
+\noindent\textbf{Soluzione} Per ipotesi $\neg p(\U)=q(\U)$ per qualche tipo $q$. Ovviamente $q(\U) \cup p(\U)= \U$ e $q(\U) \cap p(\U)= \emptyset$.\\
+Sia $r(x):=p(x) \cup q(x)$. Abbiamo che $r$ non è realizzabile. Per saturazione, questo significa che esistono $p_0(x) \subseteq p(x)$ e $q_0(x) \subseteq q(x)$ finiti tali che $p_0(x) \cup q_0(x)$ non è realizzabile, ovvero $p_0(\U) \cap q_0(\U)=\emptyset$.\\
+Ovviamente $p(\U) \subseteq p_0(\U) \subseteq \U$ e $q(\U) \subseteq q_0(\U) \subseteq \U$. Ma questo significa che $p(\U)=p_0(\U)$ e $q(\U)=q_0(\U)$, e l'esercizio è finito.
+
+
+
+\end{document}
