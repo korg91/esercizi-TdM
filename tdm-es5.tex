@@ -42,13 +42,20 @@
 \DeclareMathOperator{\dom}{dom}
 \begin{document}
 
-\noindent Andrea Gadotti \hfill 27 aprile 2014 - Revisione 0 
+\noindent Andrea Gadotti \hfill 27 aprile 2014 - Revisione 1 
 
 \
 
 \section*{Teoria dei Modelli - Quinto foglio di esercizi}
 
 \
+
+\subsection*{Esercizio 0}
+
+Sia $\phi(z)$ una formula consistente. Si dimostri che se $b \in \acl(A,a)$ per ogni $a \models \phi(z)$ allora $b \in \acl(A)$.\\
+\\
+\noindent\textbf{Soluzione} Sia $M$ un modello che contiene $A$. Poiché $\phi(z)$ è consistente in $\U$, allora deve esserlo anche in $M$, ovvero $M$ contiene una qualche soluzione $a$ di $M$. Quindi grazie al teorema 10.6 si ha che $b \in M$. Per arbitrarietà di $M$ e di nuovo per il teorema 10.6 si ha la tesi.
+
 
 \subsection*{Esercizio 1}
 Lavoriamo all'interno di un modello $\U$ saturo e di cardinalità grande. Si dimostri che per ogni $A\subseteq N$ esiste un $M$ tale che $\acl A\,=\,M\cap N$.\\
@@ -58,23 +65,13 @@ Procediamo per induzione transfinita come in 3.41, definendo $A_0:=A$. Per il pa
 Dimostriamo ora che, sotto l'ipotesi induttiva, esiste un $b$ come richiesto. Si vede facilmente che la richiesta su $b$ equivale a chiedere che $b$ realizzi il tipo $p(x)$ così definito (scriviamo $\phi$ al posto di $\phi_{i_1}$):
 $$\big\{\phi(x)\big\} \ \cup \ \big\{\psi(b,x)\imp\neg\E^{\le n}y\,\psi(y,x)\ :\ b\in N\sm\acl(A),\ \ \ \psi(y,x)\in L(A_i),\ \ \ n\le\omega\big\}$$
 
-Occorre mostrare quindi che $p(x)$ è consistente in $\U$. Supponiamo per assurdo che non lo sia. Allora per saturazione non è nemmeno finitamente consistente. Questo significa che esiste (un sottoinsieme finito di $\omega$, o equivalentemente, nel nostro caso, esiste) $\overline{n} \in \omega$, ed esistono un numero finito di formule $\psi_j(y,x)$ a parametri in $A_i$, $1 \leq j \leq m$ per qualche $m$ naturale, e per ogni $j$ esistono un numero finito di $b_{j,k} \in N \sm \acl(A)$, $1 \leq k \leq p_j$ per qualche $p_j$ naturale, tali che per ogni $x \in \U$ vale 
+Occorre mostrare quindi che $p(x)$ è consistente in $\U$. Supponiamo per assurdo che non lo sia. Allora per saturazione non è nemmeno finitamente consistente. Questo significa che esiste (un sottoinsieme finito di $\omega$, o equivalentemente, nel nostro caso, esiste) $\overline{n} \in \omega$, ed esistono un numero finito di formule $\psi_j(y,x)$ a parametri in $A_i$, $1 \leq j \leq m$ per qualche $m$ naturale, ed esistono un numero finito di $b_{k} \in N \sm \acl(A)$, $1 \leq k \leq m$, tali che per ogni $x \in \U$ vale 
+$$\neg \phi(x) \vee [\psi_1(b_1,x) \wedge \E^{\le \overline{n}}y\,\psi_1(y,x)] \vee ... \vee [\psi_m(b_m,x) \wedge \E^{\le \overline{n}}y\,\psi_m(y,x)]$$
 
-\begin{equation*}
-\begin{split}
-\neg \phi(x)& 	\vee [\psi_1(b_{1,1},x) \wedge \E^{\le n}y\,\psi_1(y,x)] \vee ... \vee [\psi_1(b_{1,p_1},x) \wedge \E^{\le n}y\,\psi_1(y,x)] \\
-			&	\vee [\psi_2(b_{2,1},x) \wedge \E^{\le n}y\,\psi_2(y,x)] \vee ... \vee [\psi_2(b_{2,p_2},x) \wedge \E^{\le n}y\,\psi_2(y,x)] \\
-			&	\vdots \\
-			&	\vee [\psi_m(b_{m,1},x) \wedge \E^{\le n}y\,\psi_m(y,x)] \vee ... \vee [\psi_m(b_{m,p_m},x) \wedge \E^{\le n}y\,\psi_m(y,x)] \\
-\end{split}
-\end{equation*}
+Sia $b=(b_1, \cdots, b_m)$. Possiamo ovviamente riscrivere ogni $\psi_j$ in modo che per ogni $x \in \U$ valga
+$$\neg \phi(x) \; \vee \; [\psi_1(b,x) \wedge \E^{\le \overline{n}}y\,\psi_1(y,x)] \vee ... \vee [\psi_m(b,x) \wedge \E^{\le \overline{n}}y\,\psi_m(y,x)]$$
 
-\noindent \emph{NOTA: vorrei dimostrare che questo è assurdo. Purtroppo non riesco a farlo, e in realtà ho anche qualche dubbio sul fatto che l'assurdo ci sia davvero. Infatti, riesco a dimostrare l'assurdo solo nel caso in cui l'insieme dei $b_{j,p_j}$ è formato da un solo elemento $b$. Procedo quindi con la dimostrazione assumendo questo fatto per ipotesi, sperando che la dimostrazione sia nel complesso corretta e ci sia da sistemare solo questo problema.}\\
-\\
-Supponiamo allora che per ogni $x \in \U$ valga
-$$\neg \phi(x) \; \vee \; [\psi_1(b,x) \wedge \E^{\le n}y\,\psi_1(y,x)] \vee ... \vee [\psi_m(b,x) \wedge \E^{\le n}y\,\psi_m(y,x)]$$
-
-Sia $q$ una qualsiasi soluzione di $\phi(x)$ (che esiste perché $\phi(x)$ consistente in $\U$ per ipotesi). Allora deve valere $\psi_j(b,q) \wedge \E^{\le n}y\,\psi_j(y,q)$ per qualche $j$. Ovvero $b$ è algebrico su $A_i \cup \{q\}$, i.e. $b \in \acl(A_i,q)$ per ogni $q \models \phi(x)$. Ma allora per l'esercizio 10.10 abbiamo che $b \in acl(A_i)$. Ma per ipotesi $b \in N \sm \acl(A)$, il che contraddice l'ipotesi induttiva.
+Sia $q$ una qualsiasi soluzione di $\phi(x)$ (che esiste perché $\phi(x)$ consistente in $\U$ per ipotesi). Allora deve valere $\psi_j(b,q) \wedge \E^{\le n}y\,\psi_j(y,q)$ per qualche $j$. Ovvero $b$ è algebrico su $A_i \cup \{q\}$, i.e. $b \in \acl(A_i,q)$ per ogni $q \models \phi(x)$. Ma allora per l'Esercizio 0 abbiamo che $b \in acl(A_i)$. Ma per ipotesi $b \in N \sm \acl(A)$, il che contraddice l'ipotesi induttiva.
 
 \subsection*{Esercizio 2}
 
